@@ -1,0 +1,150 @@
+.nav{
+    background: linear-gradient(to bottom, #f1b66e,#e1cfad);   
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+}
+
+a{
+    color: black;
+    margin-right: 5vh;
+    font-size: 2vh;
+    padding: 2vh;
+    margin-top: 2vh;
+    text-decoration: none;
+}
+
+.nav-btn:hover{
+    background-color: #b67a32;
+    color: white;
+    padding: 2vh;
+    border-radius: 2vh;
+}
+.logo{
+    height: 14vh;
+    width: 14vh;
+    margin-right: 100vh;
+    margin-bottom: 2vh;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
+  color: #444;
+  margin: 0;
+  padding: 0;
+}
+
+.checkout-container {
+  max-width: 90vw;
+  margin: 6vh auto;
+  text-align: center;
+}
+
+.checkout-container h1 {
+  font-weight: 600;
+  color: #4a4a4a;
+  margin-bottom: 5vh;
+}
+
+.checkout-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6vh;
+  text-align: left;
+}
+
+.shipping, .order {
+  flex: 1;
+  min-width: 40vh;
+}
+
+h2 {
+  font-size: 2.3vh;
+  color: #6a5c4d;
+  font-weight: 600;
+  margin-bottom: 1vh;
+}
+
+hr {
+  border: none;
+  border-top: 0.1vh solid #ccc;
+  margin-bottom: 3vh;
+}
+
+label {
+  display: block;
+  font-size: 1.8vh;
+  margin-bottom: 1vh;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 1.5vh;
+  margin-bottom: 2.5vh;
+  border: 0.1vh solid #bbb;
+  border-radius: 0.5vh;
+  font-size: 1.8vh;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5vh;
+  font-size: 1.8vh;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 3vh 0;
+  font-size: 2vh;
+  font-weight: 600;
+}
+
+#purchaseBtn {
+  background-color: #d3b58f;
+  color: white;
+  border: none;
+  border-radius: 2vh;
+  padding: 1.5vh 4vh;
+  font-size: 2vh;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#purchaseBtn:hover {
+  background-color: #b68b4c;
+}
+
+.back {
+  position: fixed;
+  bottom: 3vh;
+  left: 3vh;
+  display: flex;
+  align-items: center;
+}
+
+.back a {
+  text-decoration: none;
+  color: #444;
+  font-size: 1.8vh;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.back a:hover {
+  color: #b68b4c;
+}
+
+.arrow {
+  background-color: #d3b58f;
+  color: white;
+  border-radius: 50%;
+  padding: 1vh;
+  margin-right: 1vh;
+}

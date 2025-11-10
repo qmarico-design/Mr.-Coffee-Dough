@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Coffee Dough</title>
+        <link rel="icon" href="2.png">
+        <link rel="stylesheet" href="products-style.css">
+    </head>
+<body>
+
+    <div class="nav">
+            <img class="logo" src="icons/logo.png">
+            <a class="nav-btn" href="home.html">Home</a>
+            <a class="nav-btn" href="about.html">About</a>
+            <a class="nav-btn" href="products.html">Products</a>
+            <a class="nav-btn" href="contact.html">Contact Us</a>
+            <a class="nav-btn" href="index.html">Log Out</a>
+        </div>
+
+        <h1><span>Products</span></h1>
+
+        <center><button class="selector" id="cof">Coffee</button>
+        <button class="selector" id="dou">Doughnuts</button></center>
+
+    <center><div id="coffee">
+        <div class="separator2">
+        <div class="products">
+            <img src="coffee images/americano.png" alt="">
+            <p>Americano<br>P80.00</p>    
+            <button>Buy</button>
+        </div>
+        <div class="products">
+            <img src="coffee images/caramel machiato.png" alt="">
+            <p>Caramel Machiato<br>
+            P115.00</p>    
+            <button>Buy</button>
+        </div>
+        <div class="products">
+            <img src="coffee images/vanilla latte.png" alt="">
+            <p>Vanilla Latte<br>P105.00</p>    
+            <button>Buy</button>
+        </div>
+        <div class="products">
+            <img src="coffee images/hazelnut.png" alt="">
+            <p>Hazelnut<br>P105.00</p>    
+            <button>Buy</button>
+        </div>
+        </div>
+        <br>
+        <div class="separator2">
+        <div class="products">
+            <img src="coffee images/matcha latte.png" alt="">
+            <p>Matcha Latte<br>P120.00</p>    
+            <button>Buy</button>
+        </div>
+        <div class="products">
+            <img src="coffee images/mocha.png" alt="">
+            <p>Mocha<br>P110.00</p>    
+            <button>Buy</button>
+        </div>
+        <div class="products">
+            <img src="coffee images/spanish latte.png" alt="">
+            <p>Spanish Latte<br> P110.00</p>    
+            <button>Buy</button>
+        </div>
+        <div class="products">
+            <img src="coffee images/ube latte.png" alt="">
+            <p>Ube Latte<br> P100.00</p>    
+            <button>Buy</button>
+        </div>
+        </div>
+    </div>
+    <div id="doughnuts" style="display: none;">
+         <div class="separator2">
+        <div class="products">
+            <img src="doughnut images/almond crunch.png" alt="">
+            <p>Almond Crunch<br>P55.00</p>    
+            <button>Buy</button>
+        </div>
+        <div class="products">
+            <img src="doughnut images/choco sprinkles.png" alt="">
+            <p>Choco Springkles<br>P50.00</p>    
+            <button>Buy</button>
+        </div>
+        <div class="products">
+            <img src="doughnut images/choco vanilla.png" alt="">
+            <p>Choco Vanilla<br>P50.00</p>    
+            <button>Buy</button>
+        </div>
+        <div class="products">
+            <img src="doughnut images/matcha pis.png" alt="">
+            <p>Macha Pistachio<br>P55.00</p>    
+            <button>Buy</button>
+        </div>
+        </div>
+        <br>
+        <div class="separator2">
+        <div class="products">
+            <img src="doughnut images/red velvet.png" alt="">
+            <p>Red Velvet<br>P55.00</p>    
+            <button>Buy</button>
+        </div>
+        <div class="products">
+            <img src="doughnut images/straweberry sprinkles.png" alt="">
+            <p>Strawberry Sprinkles<br>P50.00</p>    
+            <button>Buy</button>
+        </div>
+        <div class="products">
+            <img src="doughnut images/super glazed.png" alt="">
+            <p>Sugar Glazed<br>P45.00</p>    
+            <button>Buy</button>
+        </div>
+        <div class="products">
+            <img src="doughnut images/vanilla.png" alt="">
+            <p>Vanilla <br> P45.00</p>    
+            <button>Buy</button>
+        </div>
+        </div>
+    </div>
+    </center>
+
+
+<div class="cart-container">
+  <div class="cart-btn" id="cartBtn">
+    🛒
+    <span id="cartCount">0</span>
+  </div>
+
+  <div class="cart-preview" id="cartPreview">
+    <h4>Your Cart</h4>
+    <div id="cartItemsPreview">No items yet.</div>
+    <div class="cart-total">
+      <strong>Total:</strong> <span id="cartTotalPreview">₱0.00</span>
+    </div>
+    <button id="checkoutBtn" style="display: none;">Go to Checkout</button>
+  </div>
+</div>
+
+<script>
+//carts
+function updateCartPreview() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const count = document.getElementById("cartCount");
+  const previewContainer = document.getElementById("cartItemsPreview");
+  const totalDisplay = document.getElementById("cartTotalPreview");
+
+  count.textContent = cart.length;
+
+  if (cart.length === 0) {
+    previewContainer.innerHTML = "No items yet.";
+    totalDisplay.textContent = "₱0.00";
+    return;
+  }
+
+  let total = 0;
+  previewContainer.innerHTML = cart.map(item => {
+    const subtotal = item.price * (item.qty || 1);
+    total += subtotal;
+    return `
+      <div class="cart-item">
+        <span>${item.name}</span>
+        <span>x${item.qty || 1}</span>
+        <span>₱${subtotal.toFixed(2)}</span>
+      </div>
+    `;
+  }).join("");
+
+  totalDisplay.textContent = "₱" + total.toFixed(2);
+}
+
+
+const cartContainer = document.querySelector(".cart-container");
+const cartPreview = document.getElementById("cartPreview");
+
+cartContainer.addEventListener("mouseenter", () => {
+  cartPreview.style.display = "block";
+  updateCartPreview();
+});
+
+cartContainer.addEventListener("mouseleave", () => {
+  cartPreview.style.display = "none";
+});
+
+document.getElementById("cartBtn").addEventListener("click", () => {
+  window.location.href = "checkout.html";
+});
+
+document.getElementById("checkoutBtn").addEventListener("click", () => {
+  window.location.href = "checkout.html";
+});
+
+
+const coffeeSection = document.getElementById("coffee");
+const doughnutSection = document.getElementById("doughnuts");
+
+document.getElementById("cof").addEventListener("click", () => {
+  coffeeSection.style.display = "block";
+  doughnutSection.style.display = "none";
+});
+
+document.getElementById("dou").addEventListener("click", () => {
+  coffeeSection.style.display = "none";
+  doughnutSection.style.display = "block";
+});
+
+
+document.querySelectorAll(".products button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const productElement = btn.closest(".products");
+    const textLines = productElement.querySelector("p").innerText.split("\n");
+
+    const name = textLines[0].trim();
+    const priceText = textLines[1].replace(/[^\d.]/g, "");
+    const price = parseFloat(priceText);
+
+    if (isNaN(price)) {
+      alert("Error reading price for: " + name);
+      return;
+    }
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+      existingItem.qty += 1;
+    } else {
+      cart.push({ name, price, qty: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartPreview();
+
+
+    localStorage.setItem("cartUpdated", Date.now());
+
+
+    showAddedPopup(name);
+  });
+});
+
+// popup
+function showAddedPopup(productName) {
+  const popup = document.createElement("div");
+  popup.className = "added-popup";
+  popup.textContent = `✅ ${productName} added to cart!`;
+
+  document.body.appendChild(popup);
+
+
+  setTimeout(() => {
+    popup.classList.add("show");
+  }, 10);
+
+
+  setTimeout(() => {
+    popup.classList.remove("show");
+    setTimeout(() => popup.remove(), 300);
+  }, 1500);
+}
+
+
+window.addEventListener("focus", updateCartPreview);
+document.addEventListener("DOMContentLoaded", updateCartPreview);
+</script>
+
+<style>
+.added-popup {
+  position: fixed;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  background: #e09942;
+  color: #fff;
+  padding: 1vh 2vh;
+  border-radius: 8px;
+  opacity: 0;
+  font-size: 2vh;
+  transition: all 0.3s ease;
+  box-shadow: 0 0.8vh 2vh rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+.added-popup.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+</style>
+</html>

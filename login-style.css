@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+}
+
+body{
+    background: linear-gradient(to bottom, #f1b66e,#e1cfad);  
+}
+
+.co-container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 84vh;
+    margin: 0;
+}
+
+.container {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 300px;
+    background-color: white;
+    box-shadow: 10px 15px rgba(0, 0, 0, 0.3); 
+}
+
+.form-toggle {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.form-toggle button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+}
+
+.form-toggle button.active {
+    background: #b67a32;
+    color: white;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form.hidden {
+    display: none;
+}
+
+.form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form button {
+    padding: 10px;
+    background: #b67a32;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form button:hover {
+    background: #b67a32;
+}
+
+#register-message {
+    color: green;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.nav-btn:hover{
+    background-color: #b67a32;
+    color: white;
+    padding: 2vh;
+    border-radius: 2vh;
+}
+
+.logo{
+    height: 14vh;
+    width: 14vh;
+    margin-bottom: 2vh;
+    margin-left: 9vh;
+}
+
+.nav{ 
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+}
+
+.container h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cup{
+    height: 75vh;
+    filter: drop-shadow(20px 20px 30px rgba(0, 0, 0, 0.3));
+}
+
+.cup-container{
+    width: 100%;
+    position: absolute;
+    top: 20vh;
+    z-index: -1;
+}

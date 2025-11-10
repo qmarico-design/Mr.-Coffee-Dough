@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coffee Dough</title>
+  <link rel="icon" href="2.png">
+  <link rel="stylesheet" href="receipt-style.css">
+</head>
+<body>
+
+  <div class="nav">
+    <img class="logo" src="icons/logo.png">
+    <a class="nav-btn" href="home.html">Home</a>
+            <a class="nav-btn" href="about.html">About</a>
+            <a class="nav-btn" href="products.html">Products</a>
+            <a class="nav-btn" href="contact.html">Contact Us</a>
+            <a class="nav-btn" href="index.html">Log Out</a>
+  </div>
+
+  
+  <div class="receipt-container">
+    <img src="1left.png" class="cup left">
+    <img src="1.png" class="cup right">
+    
+    <div class="receipt-content">
+      <img src="icons/check icon.png" class="checkmark" alt="Success">
+      <h2>Payment Success!</h2>
+      <h1 id="receiptTotal">PHP 0.00</h1>
+
+      <hr>
+
+      <div class="details">
+        <div class="row">
+          <span>Payment Time:</span>
+          <span id="time"></span>
+        </div>
+        <div class="row">
+          <span>Sender Name:</span>
+          <span id="senderName"></span>
+        </div>
+        <hr>
+        <div class="row">
+          <span>Amount Due:</span>
+          <span id="amountDue"></span>
+        </div>
+        <div class="row">
+          <span>Amount Paid:</span>
+          <span id="amountPaid"></span>
+        </div>
+        <div class="row">
+          <span>Change:</span>
+          <span id="change"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="back">
+    <a href="products.html"><span class="arrow">←</span> Back to shopping</a>
+  </div>
+
+  <script>
+    // Load data from localStorage (from checkout page)
+    const data = JSON.parse(localStorage.getItem("receiptData"));
+
+    if (data) {
+      document.getElementById("receiptTotal").textContent = `PHP ${data.total.toLocaleString()}`;
+      document.getElementById("time").textContent = data.time;
+      document.getElementById("senderName").textContent = data.name;
+      document.getElementById("amountDue").textContent = `₱${data.total.toFixed(2)}`;
+      document.getElementById("amountPaid").textContent = `₱${data.paid.toFixed(2)}`;
+      document.getElementById("change").textContent = `₱${data.change.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

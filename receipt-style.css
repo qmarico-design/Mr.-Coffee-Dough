@@ -1,0 +1,138 @@
+
+.nav {
+  background: linear-gradient(to bottom, #f1b66e,#e1cfad);   
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  color: black;
+  margin-right: 5vh;
+  font-size: 2vh;
+  padding: 2vh;
+  margin-top: 2vh;
+  text-decoration: none;
+}
+
+.nav-btn:hover {
+  background-color: #b67a32;
+  color: white;
+  padding: 2vh;
+  border-radius: 2vh;
+}
+
+.logo {
+  height: 14vh;
+  width: 14vh;
+  margin-right: 110vh;
+  margin-bottom: 2vh;
+}
+
+/* resibo */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #444;
+  text-align: center;
+}
+
+.receipt-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 85vh;
+  padding: 5vh 0;
+}
+
+.cup {
+  width: 60vh;
+  height: auto;
+  position: absolute;
+  bottom: 10vh;
+}
+
+.cup.left {
+  left: 3vh;
+}
+
+.cup.right {
+  right: 3vh;
+}
+
+.receipt-content {
+  background: white;
+  text-align: center;
+  padding: 4vh 6vh;
+  border-radius: 2vh;
+  box-shadow: 0 0 2vh rgba(0,0,0,0.1);
+  max-width: 65vh;
+  z-index: 2;
+  margin-top: 4vh;
+}
+
+.checkmark {
+  width: 10vh;
+  margin-bottom: 1.5vh;
+}
+
+h1 {
+  font-size: 4vh;
+  margin: 1vh 0;
+  color: #3a3a3a;
+}
+
+h2 {
+  font-size: 2.2vh;
+  color: #666;
+  margin-bottom: 1vh;
+}
+
+hr {
+  border: none;
+  border-top: 0.1vh solid #ccc;
+  margin: 2vh 0;
+}
+
+.details {
+  text-align: left;
+  margin-top: 2vh;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2vh;
+  margin: 1vh 0;
+}
+
+.back {
+  position: fixed;
+  bottom: 3vh;
+  left: 3vh;
+}
+
+.back a {
+  text-decoration: none;
+  color: #444;
+  font-size: 1.8vh;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.back a:hover {
+  color: #b68b4c;
+}
+
+.arrow {
+  background-color: #d3b58f;
+  color: white;
+  border-radius: 50%;
+  padding: 1vh;
+  margin-right: 1vh;
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coffee Dough</title>
+  <link rel="icon" href="2.png">
+  <link rel="stylesheet" href="checkout-style.css">
+</head>
+<body>
+
+
+  <div class="nav">
+    <img class="logo" src="icons/logo.png">
+    <a class="nav-btn" href="home.html">Home</a>
+            <a class="nav-btn" href="about.html">About</a>
+            <a class="nav-btn" href="products.html">Products</a>
+            <a class="nav-btn" href="contact.html">Contact Us</a>
+            <a class="nav-btn" href="index.html">Log Out</a>
+  </div>
+
+  <div class="checkout-container">
+    <h1>Checkout</h1>
+    <div class="checkout-content">
+      
+
+      <div class="shipping">
+        <h2>Shipping Details</h2>
+        <hr>
+        <form id="shippingForm">
+          <label>Full Name:</label>
+          <input type="text" id="fullName" required>
+
+          <label>Email:</label>
+          <input type="email" id="email" required>
+
+          <label>Address:</label>
+          <input type="text" id="address" required>
+        </form>
+      </div>
+
+   
+      <div class="order">
+        <h2>Your Order</h2>
+        <hr>
+        <div id="orderItems"></div>
+
+        <div class="order-total">
+          <strong>Total</strong>
+          <span id="orderTotal">₱0.00</span>
+        </div>
+
+        <label>Enter payment:</label>
+        <input type="number" id="payment" placeholder="₱" required>
+
+        <button id="purchaseBtn">Purchase</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="back">
+    <a href="products.html"><span class="arrow">←</span> Back to shopping</a>
+  </div>
+
+  <script>
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const orderItems = document.getElementById("orderItems");
+  const orderTotal = document.getElementById("orderTotal");
+
+
+  function renderCart() {
+    let total = 0;
+
+    if (cart.length === 0) {
+      orderItems.innerHTML = "<p>Your cart is empty.</p>";
+      orderTotal.textContent = "₱0.00";
+      return;
+    }
+
+    orderItems.innerHTML = cart.map((item, index) => {
+      const subtotal = item.price * (item.qty || 1);
+      total += subtotal;
+
+      return `
+        <div class="order-item">
+          <span>${item.name}</span>
+          <div class="qty-control">
+            <button class="qty-btn" data-index="${index}" data-action="minus">−</button>
+            <span class="qty">${item.qty}</span>
+            <button class="qty-btn" data-index="${index}" data-action="plus">+</button>
+          </div>
+          <span>₱${subtotal.toFixed(2)}</span>
+        </div>
+      `;
+    }).join("");
+
+    orderTotal.textContent = "₱" + total.toFixed(2);
+
+   
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+//+- pindutan
+  orderItems.addEventListener("click", e => {
+    if (e.target.classList.contains("qty-btn")) {
+      const index = e.target.dataset.index;
+      const action = e.target.dataset.action;
+
+      if (action === "plus") {
+        cart[index].qty += 1;
+      } else if (action === "minus") {
+        cart[index].qty -= 1;
+        if (cart[index].qty <= 0) {
+          cart.splice(index, 1);
+        }
+      }
+
+      renderCart();
+    }
+  });
+
+
+  document.getElementById("purchaseBtn").addEventListener("click", () => {
+    let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const name = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const payment = parseFloat(document.getElementById("payment").value);
+
+    if (!name || !email || !address) {
+      alert("Please fill in all shipping details.");
+      return;
+    }
+
+    if (isNaN(payment) || payment < total) {
+      alert("Insufficient payment. Please enter a valid amount.");
+      return;
+    }
+
+    const change = payment - total;
+    const now = new Date();
+    const time = now.toLocaleString();
+
+    const receiptData = {
+      name,
+      email,
+      address,
+      total,
+      paid: payment,
+      change,
+      time,
+      items: cart
+    };
+
+
+    localStorage.setItem("receiptData", JSON.stringify(receiptData));
+    localStorage.removeItem("cart");
+
+    localStorage.setItem("cartUpdated", Date.now());
+
+
+    window.location.href = "receipt.html";
+  });
+
+  function notifyCartChange() {
+    localStorage.setItem("cartUpdated", Date.now());
+  }
+
+  window.addEventListener("beforeunload", notifyCartChange);
+
+
+  renderCart();
+</script>
+
+</body>
+</html>
+

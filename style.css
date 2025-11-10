@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;}
+
+.nav{
+    background: linear-gradient(to bottom, #f1b66e,#e1cfad);   
+    height: 70vh;
+    border-radius: 0 0 70% 70%; 
+    display: flex;
+    justify-content: right;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav{
+    margin-top: 7vh;
+    width: 40%;
+}
+
+a{
+    color: black;
+    font-size: 2vh;
+    padding: 2vh;
+}
+
+.nav-btn{
+    margin-right: 5%;
+}
+
+.nav-btn:hover{
+    background-color: #b67a32;
+    color: white;
+    padding: 2vh;
+    border-radius: 2vh;
+}
+
+.logo{
+    height: 14vh;
+    width: 14vh;
+    margin-right: 50%;
+}
+
+.text{
+    width: 185vh;
+    position: absolute;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    margin-bottom: 27%;
+}
+
+.cup{
+    height: 75vh;
+    filter: drop-shadow(20px 20px 30px rgba(0, 0, 0, 0.3));
+}
+
+.cup-container{
+    width: 100%;
+    position: absolute;
+    top: 20vh;
+}
+
+p{
+    text-align: center;
+    font-size: 2vh;
+    margin-top: 4vh;
+    letter-spacing: 2px;
+}
+
+.buy{
+    background-color: #b67a32;
+    border-radius: 5vh;
+    border: #f1b66e solid 5px;
+    display: flex;
+    position: absolute;
+    justify-self: center;
+    margin-top: 3vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+
+.buy:hover{
+    background: wheat;
+    color: black;
+}
